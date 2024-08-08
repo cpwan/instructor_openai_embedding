@@ -14,9 +14,9 @@ class InstructorOpenAIEmbeddings(OpenAIEmbeddings):
         result = super().embed_documents(input)
         return result
 
-    def embed_query(self,input: str):  # Added 'self' as a parameter
+    def embed_query(self,input: str):
         self.model_kwargs['extra_body'] = {'embed_type':'query'}
-        result = super().embed_query(input)
+        result = super().embed_documents([input])[0]
         return result
 
 if __name__ == '__main__':
