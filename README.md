@@ -2,7 +2,7 @@
 client to call instructor model hosted in a openai-compatibale endpoint
 # installation
 ```
-python -m pip install "instructor_openai_embedding @ git+https://github.com/IvanYuen00/instructor_openai_embedding"
+python -m pip install "instructor_openai_embedding @ git+https://github.com/cpwan/instructor_openai_embedding"
 ```
 
 # to use it in python
