@@ -5,7 +5,8 @@ client to call instructor model hosted in a openai-compatibale endpoint
 python -m pip install "instructor_openai_embedding @ git+https://github.com/cpwan/instructor_openai_embedding"
 ```
 
-# to use it in python
+# Usage
+## Langchain
 ```python
 from InstructorOpenAIEmbeddings import InstructorOpenAIEmbeddings
 
@@ -22,3 +23,35 @@ documents_result = embeddings.embed_documents(['The capital of France is Paris.'
 print(query_result)
 print(documents_result)
 ```
+## openai
+```python
+import openai
+client = openai.OpenAI(
+    api_key='Your API Key'
+    base_url='http://your_own_endpoint'
+)
+
+response = client.embeddings.create(
+    model="hkunlp/instructor-xl",
+    input="Hello, world!",
+    extra_body={"embed_type": "query"}
+)
+print(response.data[0].embedding)
+```
+
+## LiteLLM
+```python
+import openai
+client = openai.OpenAI(
+    api_key='Your API Key'
+    base_url='http://your_litellm_endpoint' 
+)
+
+response = client.embeddings.create(
+    model="hkunlp/instructor-xl",
+    input="Hello, world!",
+    extra_body={"extra_body":{"embed_type": "query"}} # required for LiteLLM 
+)
+print(response.data[0].embedding)
+```
+
